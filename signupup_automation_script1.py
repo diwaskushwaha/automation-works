@@ -6,33 +6,33 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=False)
     page = browser.new_page()
 
-    # 1️⃣ Open website
+    
     page.goto("https://authorized-partner.vercel.app/")
     page.wait_for_timeout(1500)
 
-    # 2️⃣ Click Login
+     Click Login
     page.locator("text=Login").click()
     page.wait_for_timeout(1500)
 
-    # 3️⃣ Click Sign Up
+     Click Sign Up
     page.locator("text=Sign Up").click()
     page.wait_for_timeout(1500)
 
-    # 4️⃣ Agree checkbox
+     Agree checkbox
     page.locator("#remember").click()
     page.wait_for_timeout(800)
 
-    # 5️⃣ Continue
+     Continue
     page.locator("text=Continue").click()
     page.wait_for_timeout(2000)
 
-    # 6️⃣ Wait for form
+     Wait for form
     form = page.locator("form")
     form.wait_for()
 
     inputs = form.locator("input")
 
-    # 7️⃣ Fill form like a human (important for React validation)
+     Fill form like a human (important for React validation)
     data = [
         "Diwas",
         "Kushwaha",
@@ -53,13 +53,14 @@ with sync_playwright() as p:
     page.locator("body").click()
     page.wait_for_timeout(1000)
 
-    # 8️⃣ Submit form (same as clicking Next)
+     Submit form (same as clicking Next)
     form.evaluate("form => form.requestSubmit()")
 
-    print("✅ Next step triggered!")
+    print(" Next step triggered!")
 
     # Confirm navigation
     page.wait_for_timeout(3000)
     print("Current URL:", page.url)
 
     browser.close()
+
